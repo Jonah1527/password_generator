@@ -103,3 +103,45 @@ function generatePassword(){
   determineSpecial();
   console.log(specialCheck);
 
+  var characters = lowercaseCharacter;
+  var password = "";
+  if (uppercaseCheck && numberCheck && specialCheck){
+    characters += uppercaseCharacter + numberCharacter + specialCharacter;
+  
+  }else if (uppercaseCheck && numberCheck){
+    characters += uppercaseCharacter + numberCharacter;
+  
+  }else if (numberCheck && specialCheck){
+    characters += numberCharacter + specialCharacter;
+  
+  }else if (uppercaseCheck && specialCheck){
+    characters += uppercaseCharacter + specialCharacter;
+  
+  }else if (uppercaseCheck){
+    characters += uppercaseCharacter;
+  
+  }else if(numberCheck){
+    characters += numberCharacter;
+  
+  }else if (specialCheck){
+    characters += specialCharacter;
+  
+  }else{
+    characters === lowercaseCharacter;
+  }
+  
+    for(var i = 0; i < passwordLength; i++){
+      password += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return password;
+  }
+  
+  function writePassword() {
+    var password1 = "";
+    password1 = generatePassword();
+    var passwordText = document.querySelector("#password");
+    passwordText.value = password1;
+  }
+  
+  
+  generateBtn.addEventListener("click", writePassword);
