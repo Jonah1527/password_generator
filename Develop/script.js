@@ -1,16 +1,15 @@
 var generateBtn = document.querySelector("#generate");
-var lowercaseChar = "abcdefghijklmnopqrstuvwxyz";
-var uppercaseChar = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numberChar = "0123456789";
-var specialChar = "!@#$%^&*()_-+={}[];:'`~<,>.?/|"
-var passwordLength;
-var uppercaseCheck;
+var lowercaseCharacter = "abcdefghijklmnopqrstuvwxyz";
+var specialCharacter = "!@#$%^&*()_-+={}[];:'`~<,>.?/|"
+var uppercaseCharacter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+var numberCharacter = "0123456789";
 var numberCheck;
+var uppercaseCheck;
 var specialCheck;
+var passwordLength;
 
-//Function used to determine the length of the password
 function determineLength(){
-  passwordLength = prompt("How long would you like your password to be? (between 8-128 characters): ");
+  passwordLength = prompt("How long do you want your password to be? (between 8-128 characters): ");
 
     if (passwordLength<8){
       alert("Password needs to be a number between 8-128 characters");
@@ -25,13 +24,12 @@ function determineLength(){
     return passwordLength;
 }
 
-//Function used to determine whether the user wants to include uppercase characters in the password
 function determineUppercase(){
-  uppercaseCheck = prompt("Do you want to include uppercase letters in your password? \n(Yes or No)");
+  uppercaseCheck = prompt("Do you want to have uppercase letters in your password? \n(Yes or No)");
     uppercaseCheck = uppercaseCheck.toLowerCase();
 
     if (uppercaseCheck === null || uppercaseCheck === ""){
-      alert("Please answer Yes or No");
+      alert("Answer Yes or No");
       determineUppercase();
 
     }else if (uppercaseCheck === "yes" || uppercaseCheck ==="y"){
@@ -43,8 +41,65 @@ function determineUppercase(){
       return uppercaseCheck;
     
     }else {
-      alert("Please answer Yes or No");
+      alert("Answer Yes or No");
       determineUppercase();
     }
     return uppercaseCheck;
 }
+
+function determineNumbers(){
+  numberCheck = prompt("Do you want to include numbers in your password? \n(Yes or No)");
+    numberCheck = numberCheck.toLowerCase();
+
+    if (numberCheck === null || numberCheck === ""){
+      alert("Answer Yes or No");
+      determineNumbers();
+
+    }else if (numberCheck === "yes" || numberCheck ==="y"){
+      numberCheck = true;
+      return numberCheck;
+
+    }else if (numberCheck === "no" || numberCheck ==="n"){
+      numberCheck = false;
+      return numberCheck;
+    
+    }else {
+      alert("Answer Yes or No");
+      determineNumbers();
+    }
+    return numberCheck;
+}
+
+function determineSpecial(){
+  specialCheck = prompt("Do you want to include special characters in your password? \n(Yes or No)");
+    specialCheck = specialCheck.toLowerCase();
+
+    if (specialCheck === null || specialCheck === ""){
+      alert("Answer Yes or No");
+      determineSpecial();
+
+    }else if (specialCheck === "yes" || specialCheck ==="y"){
+      specialCheck = true;
+      return specialCheck;
+
+    }else if (specialCheck === "no" || specialCheck ==="n"){
+      specialCheck = false;
+      return specialCheck;
+    
+    }else {
+      alert("Answer Yes or No");
+      determineSpecial();
+    }
+    return specialCheck;
+}
+ 
+function generatePassword(){
+  determineLength();
+  console.log(passwordLength);
+  determineUppercase();
+  console.log(uppercaseCheck);
+  determineNumbers();
+  console.log(numberCheck);
+  determineSpecial();
+  console.log(specialCheck);
+
